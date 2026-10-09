@@ -10,7 +10,7 @@ input_folder = args.input
 output_folder = args.output
  
 model = YOLO("runs/detect/test_run_final/weights/best.pt")
-predictions = model.predict(source = input_folder, project = output_folder, save = True, save_txt = True, save_conf= True)
+predictions = model.predict(source = input_folder, project = output_folder, save = True, save_txt = True, save_conf= True, conf=0.25)
 
 for prediction in predictions:
     # if the model detects 0 objects (0 boxes)
