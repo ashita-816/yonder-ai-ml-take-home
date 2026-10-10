@@ -6,7 +6,7 @@ Install Necessary Packages:
 ```bash
 pip install -r requirements.txt
 ```
-Download Dataset:
+Download Dataset: (name of api variable - YOUR_API_KEY)
 ```bash
 python download.py
 ```
