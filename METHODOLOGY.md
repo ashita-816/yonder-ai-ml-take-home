@@ -96,6 +96,7 @@ Final Training Results:
 
 ![alt text](<Valıdation performance comparisor.png>)
 
+### Error Analysis:
 - However. the model was still better at detecting mallets, which I think could be due to the fact the mallet images were a bit more consistent than the bottle images. A lot of the mallets in the images seemed to be the same bright orange color, while the bottles were all mostly different colors.
 
  - Now the model wasn’t able to detect an object in only one image. (198/199) 
@@ -105,6 +106,17 @@ Final Training Results:
  - Finally, attempting to target the bullet point on duplicate detections, I thought to increase the confidence threshold to 0.35. This did help filter out some incorrect predictions. However, some correct ones also disappeared, so I decided to leave the threshold at 0.25.
 
  - Something extra I also had to fix was for the requirement to have an input and output folder as arguements, I had originally designed it to take in user input after being prompted, but was recommended by AI to use the module argparse because it more closely aligned witht he requirements. I had to learn more about this and its capabilities as well as I had never used it before either.
+
+ ### Video Frames:
+ - recorded a short video of an L-shaped screwdriver on a wooden floor (extracted 5 frames to test)
+ - ran these frames through  model --> didn't detect any objects
+ - model avoided incorrectly classifying the screwdriver as a mallet or bottle (false positives), even though I was using it as a mallet substitute (even tho it doesn't look that similar, it's all i had)
+ - it's also pretty different looking than the bright orange mallet frequently seen in the og training data which could be another reason for the 0 detection
+ - can't really confirm if the model accurately was able to see it wasn't a mallet or just followed patterns from training
+
+<p align="center">
+<img src="video/video_frames/frame_1.jpg" alt="Real-world video test frame" width="200">
+</p>
 
 ## 3. Known limitations
 I once again looked thrugh the predictions to find out what some inaccuracies were in the model.
@@ -118,3 +130,12 @@ I once again looked thrugh the predictions to find out what some inaccuracies we
 
 I think what I'd do next would be trying more augmentation strategies by experiementing, or even adding to the image dataset with more examples of small objects overlapping or partially obscured, as well as more images with different looking mallets.
 
+### Stretch Goal: Hard Example Mining / Active Learning
+Based on the error analysis, it seemed the model struggled most with small bottles, objects that were close together or partially obscured, and backgrounds containing objects that looked similar to bottles or mallets
+
+So I would mainly try to get these specific types of images:
+- Images with multiple small or overlapping bottles to help lower the amount of missed detections
+- Images of mallets with different colors and appearances, since many of the training examples seemed to look pretty similar
+- Images with cluttered backgrounds or objects that the model previously classified incorrectly, such as the boot it predicted as a bottle
+
+I could then retrain the model adding the new images and be able to compare its performance against my current model using the same validation set to see whether these errors improved
