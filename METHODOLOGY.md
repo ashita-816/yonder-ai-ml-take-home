@@ -85,7 +85,7 @@ Final Training Results:
 | mAP@50 | 82.86% | 87.2% |
 | mAP@50–95 | 50.22% | 54.2% |
 
-- Compared to the last training run, all four of the metrics imrpoved, even among each class--bottle anad mallet
+- Compared to the last training run, all four of the metrics improved, even among each class--bottle anad mallet
 
 | Metric | Bottle | Mallet |
 |---|---:|---:|
@@ -93,6 +93,8 @@ Final Training Results:
 | Recall | 78.7% | 85.8% |
 | mAP@50 | 81.0% | 93.3% |
 | mAP@50–95 | 48.8% | 59.5% |
+
+![alt text](<Valıdation performance comparisor.png>)
 
 - However. the model was still better at detecting mallets, which I think could be due to the fact the mallet images were a bit more consistent than the bottle images. A lot of the mallets in the images seemed to be the same bright orange color, while the bottles were all mostly different colors.
 
